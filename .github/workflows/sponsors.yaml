@@ -1,0 +1,32 @@
+name: Update Sponsors
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 30 15 * * 0-6
+
+jobs:
+  update-sponsors:
+    permissions:
+      contents: write # needed to push changes
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          sparse-checkout: |
+            readme.md
+      - uses: JamesIves/github-sponsors-readme-action@2fd9142e765f755780202122261dc85e78459405 # v1.6.0
+        with:
+          token: ${{ secrets.SPONSORS }}
+          file: readme.md
+          template: '<a href="{{ url }}" title="{{ login }}"><img src="{{ avatarUrl }}" width="56px" aria-hidden="true" /></a>&nbsp;'
+      - run: |
+          git config --global user.name "${{ env.AUTHOR_NAME }}"
+          git config --global user.email "${{ env.AUTHOR_EMAIL }}"
+          git diff --quiet || (git add readme.md && git commit --message "${{ env.COMMIT_MESSAGE }}" && git push)
+        env:
+          AUTHOR_NAME: "github-actions[bot]"
+          AUTHOR_EMAIL: "41898282+github-actions[bot]@users.noreply.github.com"
+          COMMIT_MESSAGE: "chore: update sponsors"
