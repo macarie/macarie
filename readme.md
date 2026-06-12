@@ -11,7 +11,7 @@ Lately, I've been exploring some new interests in lower-level tooling using Rust
 ### <img alt="Emoji face with large sparkling eyes and blushing cheeks, holding a pink heart with both hands close to its face, expressing love and affection" src="./assets/love.png" height="32" align="center"> Sponsors
 
 <p align="center">
-  <!-- sponsors --><a href="" title="vitejs"><img src="https:&#x2F;&#x2F;github.com&#x2F;vitejs.png" width="56px" aria-hidden="true" /></a>&nbsp;<!-- sponsors -->
+  <!-- sponsors --><!-- sponsors -->
   <br /><br />
   <a href="https://github.com/sponsors/macarie" title="Sponsor Raul Macarie"><img src="./assets/sponsor.svg" height="32" aria-hidden="true"></a>
 </p>
